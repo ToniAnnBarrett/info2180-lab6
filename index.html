@@ -1,9 +1,65 @@
 <!DOCTYPE html>
 <html>
+    
+    <body>
+
+    <h1>Computing Terms</h1>
+    <style>
+        input[type=text] {
+            width: 130px;
+            
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+        
+        input[type=text]:focus {
+            width: 100%;
+        }
+    </style>
+
      <form action="" method="post" name="form">
         <h3>Term:</h3> <input type="text" name="term" id="term" placeholder="search" /><br><br>
         <button id="search" class="search">Search</button>
 
     </form>
+    
+     <hr>
+    <h2>Result</h2>
+    <div id="result">
+        </div>
+        
+       <script> (document).ready(function() {
+
+            var searchB = $(".search");
+            var url = "https://info2180-lab6-tonibarrett.c9users.io/request.php?q=";
+
+
+            searchB.on('click', searchFunction);
+
+
+            function searchFunction(event) {
+                event.preventDefault();
+
+                var searchTerm = $("#term").val();
+
+                $.ajax({
+                        url: url + searchTerm,
+                    })
+                    .done(function(data) {
+                            $("#result").html(data);
+                    }
+                    }}</script>
+
+    
+
+</body>
 
 </html>
